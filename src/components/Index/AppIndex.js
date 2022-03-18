@@ -15,6 +15,9 @@ const AppIndex = () => {
       <button className="btn btn-outline-info" onClick={Reddit.getAccessToken}>
         Get Access Token
       </button>
+      <button className="btn btn-outline-info" onClick={Reddit.refreshToken}>
+        Get Refresh Token
+      </button>
     </main>
   )
 }
