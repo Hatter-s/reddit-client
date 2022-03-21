@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Error404 from './components/Error/404';
 import AppIndex from './components/Index/AppIndex';
+import About from './components/FullPage/AboutUs/About'
+import Contact from './components/FullPage/ContactUs/Contact'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +18,10 @@ ReactDOM.render(
         <Routes>
             <Route path='/' element={<App/>}>
               <Route index element={<AppIndex/>} />
+              <Route path='/about' element={<About/>} />
+              <Route path='/contact' element={<Contact/>} />
             </Route>
+            
             <Route path='*' element={<Error404/>}/>
         </Routes>        
       </Provider>

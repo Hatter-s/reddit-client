@@ -1,0 +1,39 @@
+
+#header{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    margin: 0%;
+}
+
+#char{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#team{
+    position: absolute;
+    bottom: 10%;
+    left: 36%;
+}
+#team p {
+    display: flex;
+    justify-content: center;
+    font-size: 80px;
+}
+#vu , #thanh{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    padding-top: 15%;
+    padding-bottom: 20%;
+}
+#vu{
+    background-image: url("https://scontent.fhan2-4.fna.fbcdn.net/v/t1.6435-9/42901902_2084600731868674_7995468439143579648_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=L5GcLC89d2cAX-Q5_zn&_nc_ht=scontent.fhan2-4.fna&oh=00_AT8lzCwe3Lq35oR4iLyBLU8sgBzTxNrFDwEC8e7XhixsVw&oe=62578DE6");
+}
+#thanh{
+    background-image: url("https://scontent.fhan2-4.fna.fbcdn.net/v/t39.30808-6/272805003_1885465181649365_1304130744382726828_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=KE2DkAjJl0oAX9GyKtR&_nc_oc=AQkxiRyWkd7DBkXsFpJrlFI1cumkSjgjIPUstPHP02SR4xhMUMI1tLnRoqQB1cqXYrPg8gAr3QIjNT_vIJXTR1cU&_nc_ht=scontent.fhan2-4.fna&oh=00_AT_0O8g-QB7Y0RuUgXFMplX86t8dER6QQTIvpE-SvsBDyw&oe=6236B3FF");
+    padding-left: 30%;
+}
