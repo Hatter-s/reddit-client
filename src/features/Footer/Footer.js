@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="container-fuild">
       <div id="footer">
         <figure id="footer-icon" >
-            <img  src="https://cdn-icons-png.flaticon.com/512/52/52053.png"/>
+            <img  src="https://cdn-icons-png.flaticon.com/512/52/52053.png" alt=""/>
             <p id="footer-name">Reddit</p>
         </figure>
         <section id="footer-menu">
