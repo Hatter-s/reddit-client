@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './index.css';
 import App from './app/App';
-import { store } from './app/store';
+import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Error404 from './components/Error/404';
