@@ -1,0 +1,14 @@
+.navbar{
+    background-color: grey  !important;
+}
+#main-icon{
+    height: 40px;
+    width: 40px;
+}
+#home, #coin , #log-in , #sign-up{
+    width: 30%;
+    margin: 0 1%;
+}
+#search-bar{
+    width: 30%;
+}
