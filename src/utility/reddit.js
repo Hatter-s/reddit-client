@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-let accessToken = '';
-let refreshToken = '';
+let accessToken = localStorage.getItem('accessToken');
+let refreshToken = localStorage.getItem('refreshToken');
 const clientID = 'Qw6-wJx07w7x6wwguYpABQ';
 const clientSecret = 's_7-u34VDk7anfZCdgbAd8Qsp4wJmw';
 const redirectURI = 'http://192.168.1.2:3000/';
@@ -22,8 +22,15 @@ export const Reddit = {
     window.location.href = url;
   },
   getAccessToken() {
+    if(accessToken && accessToken !== 'undefined') {
+      return accessToken;
+    }
     //find params
     const search = window.location.search;
+    // don't access authentication
+    if (search === '') {
+      Reddit.authorization();
+    }
     const params = {};
     search.match(/[^?&=]+/g).forEach((element, index, array) => {
       if(index % 2 === 0) {
@@ -57,8 +64,11 @@ export const Reddit = {
       if(jsonResponse.error === 'invalid_grant') {
         Reddit.authorization()
       }
+      localStorage.setItem('accessToken', jsonResponse['access_token']);
+      localStorage.setItem('refreshToken', jsonResponse['refresh_token']);
+      localStorage.setItem('expiresIn', jsonResponse['expires_in'])
       accessToken = jsonResponse['access_token'];
-      refreshToken = jsonResponse['refresh_token']; 
+      refreshToken = jsonResponse['refresh_token'];
       return accessToken;
     }
     ).catch(error => {
@@ -68,7 +78,7 @@ export const Reddit = {
       }
     });
   },
-  refreshToken() {
+  getRefreshToken() {
     //body request
     const body = `grant_type=refresh_token&refresh_token=${refreshToken}`;
 
@@ -83,10 +93,12 @@ export const Reddit = {
     ).then(jsonResponse => {
       //don't have refresh token
       if(jsonResponse.error === 400) {
-        return Reddit.getAccessToken()
+        return Reddit.getAccessToken();
       }
+      localStorage.setItem('accessToken', jsonResponse['access_token']);
+      localStorage.setItem('expiresIn', jsonResponse['expires_in'])
       accessToken = jsonResponse['access_token'];
-      return accessToken
+      return accessToken;
     })
   }
 }
