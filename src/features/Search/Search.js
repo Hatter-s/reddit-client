@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Search = () => {
   const {term, setTerm} = useState();
   const handleSubmit = (e) => {
@@ -7,12 +8,12 @@ const Search = () => {
   }
 
   return (
-    <section id="search" className="container-fluid" onSubmit={handleSubmit}>
+    <section className="container-fluid" onSubmit={handleSubmit}>
       <form>
-        <input type="text" value={term} onChange={(e) => {
+        <input  type="text" value={term} onChange={(e) => {
           setTerm(e.target.value)
         }} />
-        <input type="submit"/>
+        <input  type="submit"/>
       </form>
     </section>
   )
