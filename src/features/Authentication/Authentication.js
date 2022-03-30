@@ -73,7 +73,10 @@ const Authentication = () => {
   //call state
   const auth = useSelector(selectAuthentication);
   const search = window.location.search;
-
+  const [ term, setTerm ] = useState(''); 
+  const [ limit, setLimit ] = useState('');
+  const [ sort, setSort ] = useState('');
+  const [ emojis, setEmojis ] = useState([]);
   const handleOnload = () => {
     // Check local storage and check is this first load
     if(!/error/.test(search) && localStorage.getItem('accessToken') === 'undefined') {
@@ -109,6 +112,89 @@ const Authentication = () => {
       : auth.redditApiAuth === false ? <DontProvideRedditApiAuth /> 
       : null
     }
+    <div id='button contain'>
+      <button className="btn btn-outline-warning" onClick={() => {
+        Reddit.getIdentity();
+      }}>get Indentify</button>
+      <button className="btn btn-outline-info" onClick={() => {
+        Reddit.getRefreshToken();
+        console.log(localStorage);
+      }}>
+        get refresh token
+      </button>
+      <button className="btn btn-danger" onClick={() => {
+        Reddit.example();
+      }}>
+        example
+      </button>
+      <button className="btn btn-dark" onClick={()=> {
+        Reddit.getAccessToken();
+      }}>
+        get accessToken
+      </button>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        Reddit.search(term, limit, sort)
+      }}>
+        <label>Term: </label>
+        <input type='text' id='term' onChange={(e) => {
+          setTerm(e.target.value);
+        }} value={term} />
+        <br/>
+        <label>Limit: </label>
+        <input type='number' id='limit' onChange={(e) => {
+          setLimit(e.target.value);
+        }} value={limit} min='0' max='100' />
+        <br/>
+        <label>
+          Sort: 
+        </label>
+        <select onChange={(e) => {
+          setSort(e.target.value);
+        }} id="sort">
+          <option value='relevance'>relevance</option>
+          <option value='hot'>hot</option>
+          <option value='top'>top</option>
+          <option value='new'>new</option>
+          <option value='comments'>comments</option>
+        </select>
+        <input type='submit' />
+      </form>
+      <button 
+        className="btn btn-outline-success"
+        onClick={() => {
+          Reddit.emojis().then(result => {
+            let emojisPromise = result.map(emoji => {
+              let result = Object.entries(emoji);
+              return (
+              <figure key={result[0][0]}>
+                <img src={result[0][1]} alt=""/>
+                <figcaption>
+                  {result[0][0]}
+                </figcaption>
+              </figure>)
+            });
+            setEmojis(emojisPromise);
+          }).catch(err => console.log(err));
+          
+        }} 
+      >
+        emojis
+      </button>
+      <div className="emojis-contain d-flex flex-wrap">
+        {emojis}
+      </div>
+      <button className="btn btn-outline-info" onClick={() => {
+        Reddit.historyUpvoted();
+      }}>
+        history
+      </button>
+      <button className="btn btn-outline-danger" onClick={() => {
+        Reddit.best();
+      }}>
+        best
+      </button>
+    </div>
     </section>
   )
 }
