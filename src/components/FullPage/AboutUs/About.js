@@ -1,14 +1,14 @@
 import React from 'react';
-import './about-us.css'
-import {Header,Vu,Team,Thanh} from '../../../features/AboutUs/aboutUs'
+import './about.css'
+import {AboutHeader,Vu,AboutTeam,Thanh} from '../../../features/AboutUs/aboutUs'
 
 
 function About() {
     return (
       <div id="about">     
-        <Header/>
-        <Team/>
-        <div id ="char">
+        <AboutHeader/>
+        <AboutTeam/>
+        <div className ="character">
         <Vu/> 
         <Thanh/>       
         </div>

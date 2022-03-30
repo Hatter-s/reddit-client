@@ -3,16 +3,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import BusinessIcon from '@mui/icons-material/Business';
+import './contact_us.css'
 
-export class Header extends React.Component{
+export class ContactHeader extends React.Component{
     render(){
-        return <h1 id='header'>Contact Us</h1>
+        return <h1 id='contact-header'>Contact Us</h1>
     }
 }
-export class Teams extends React.Component{
+export class ContactTeam extends React.Component{
     render(){
         return (
-            <div id="teams">
+            <div id="contact-team">
             <p>GTV Team</p>
             <p>Gnosis To Victory</p>
         </div>

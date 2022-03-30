@@ -1,13 +1,13 @@
 import React from 'react';
-import './contact-us.css'
-import {Header,Teams,Information} from '../../../features/ContactUs/contactUs'
+import './contact.css'
+import {ContactHeader,ContactTeam,Information} from '../../../features/ContactUs/contactUs'
 
 
 function Contact() {
     return (
       <div id="contact">     
-        <Header/>
-        <Teams/>
+        <ContactHeader/>
+        <ContactTeam/>
         <Information/>      
       </div>
     );
