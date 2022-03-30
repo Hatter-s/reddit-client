@@ -1,46 +1,46 @@
 .navbar{
-    background-color: grey  !important;
+    background-color: grey  ;
     display: flex;
     flex-direction: row;
     padding: 0;
     height: 53px;
 }
-#main-icon{
+#nav-icon{
     height: 40px;
     width: 40px;
 }
-#home{
+#nav-home{
     width: 15%;
 }
-#search{
+#nav-search{
     display: flex;
     width: 50%;
 }
-#search-bar{
+#nav-search-bar{
     width: 100%;
 }
-#search-button{
+#nav-search-button{
     width: 30%;
     margin-left: 2%;
 }
-#user{
+#nav-user{
     margin-right: -8%;
     width: 25% ;
     display: flex;
     flex-direction: row;
 }
-#user-icon{
+#nav-user-icon{
     border-radius: 100%;
     height: 40px;
     width: 40px;
     margin-top: 7px;
 }
-#user-name{
+#nav-user-name{
     margin-left: 15px;
     padding-top: 15px;
     color: #fff;
 }
-#dropdown{
+#nav-dropdown{
     margin: 3%;
 }
 
