@@ -5,12 +5,12 @@ import {AboutHeader,Vu,AboutTeam,Thanh} from '../../../features/AboutUs/aboutUs'
 
 function About() {
     return (
-      <div id="about">     
+      <div className="AboutFunction" id="about-function">     
         <AboutHeader/>
         <AboutTeam/>
         <div className ="character">
-        <Vu/> 
-        <Thanh/>       
+          <Vu/> 
+          <Thanh/>       
         </div>
       </div>
     );

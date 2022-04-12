@@ -5,7 +5,7 @@ import {ContactHeader,ContactTeam,Information} from '../../../features/ContactUs
 
 function Contact() {
     return (
-      <div id="contact">     
+      <div className='ContactContainer' id="contact">     
         <ContactHeader/>
         <ContactTeam/>
         <Information/>      
