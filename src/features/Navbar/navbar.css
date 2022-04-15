@@ -88,3 +88,21 @@
     border: none;
 }
 
+/* Navbar User Loading */
+#navbar-user-loading {
+    font-size: 40px;
+    color: var(--bs-light);
+    transform: rotate(360);
+    transition: linear ;
+    animation: user-loading 1s linear infinite;
+}
+
+@keyframes user-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
