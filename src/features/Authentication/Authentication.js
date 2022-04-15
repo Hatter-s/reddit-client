@@ -190,7 +190,7 @@ const Authentication = () => {
         history
       </button>
       <button className="btn btn-outline-danger" onClick={() => {
-        Reddit.best();
+        Reddit.getPosts();
       }}>
         best
       </button>

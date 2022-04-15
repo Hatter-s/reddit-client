@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Error404 from './components/Error/404';
 import AppIndex from './components/Index/AppIndex';
+import SubredditPage from './components/FullPage/SubredditPage/SubredditPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Routes>
             <Route path='/' element={<App/>}>
               <Route index element={<AppIndex/>} />
+              <Route path='/r/:subredditId' element={<SubredditPage />}/>
             </Route>
             <Route path='*' element={<Error404/>}/>
         </Routes>        

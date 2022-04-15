@@ -1,0 +1,39 @@
+#filter {
+  display: block;
+}
+
+#subreddit-filter, #app-filter {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5em;
+  padding: 1em;
+  background-color: rgb(240, 234, 223);
+}
+
+#filter .select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em 0.5em;
+  border-radius: 1em;
+  gap: 0.1em;
+  background-color: transparent;
+  color: var(--bs-secondary);
+  border: 1px solid transparent;
+}
+
+#filter .select:hover {
+  border: 1px solid black;
+  box-shadow: 0.1em 0.1em 0.1em black;
+}
+
+#filter .select img {
+  height: 24px;
+  width: 24px;
+}
+
+#filter .selected {
+  color: var(--bs-secondary);
+  background-color: #FFF;
+  text-shadow: 0.05em 0.05em 0.05em;
+}

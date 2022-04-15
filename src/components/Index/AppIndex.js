@@ -1,24 +1,35 @@
-import React from "react";
-import Filter from "../../features/Filter/Filter";
+import React, { useEffect } from "react";
 import Search from "../../features/Search/Search";
-import Post from "../../features/Post/Post";
+import PostContainer from "../../features/PostContainer/PostsContainer";
 
-import Authentication, { CountExpire } from "../../features/Authentication/Authentication";
+import Authentication from "../../features/Authentication/Authentication";
+import { useDispatch } from "react-redux";
+import { postsFetch } from "../../features/PostContainer/PostsContainerSlice";
+import { identityFetch } from "../../features/Navbar/NavbarSlice"
+import { Reddit } from "../../utility/reddit";
 
 const AppIndex = () => {
+  //action 
+  const action = useDispatch();
+
   //state
+
+  useEffect(() => {
+    Reddit.getRefreshToken(
+    ).then(() => {
+      action(identityFetch());
+    }).then(() => {
+      action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+    });
+  })
 
   return (
     <main id="app-index">
-      <CountExpire />
-      <Filter/>
       <Search/>
       <Authentication />
-      <Post />
+      <PostContainer subreddit={null}/>
     </main>
   )
 }
 
 export default AppIndex;
-
-//handle the expire
