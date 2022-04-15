@@ -73,13 +73,8 @@ const Post = ( props ) => {
     Reddit.comment(dataPost.name, commentValue);
   }
 
-  const handleInfo = () => {
-    Reddit.info(dataPost.subredditId);
-  }
-
   const handleChangePage = () => {
     localStorage.setItem("subredditFullName", dataPost.subredditId);
-    console.log(localStorage.getItem("subredditFullName"));
   }
 
   return (
@@ -98,9 +93,8 @@ const Post = ( props ) => {
         ></i>
       </div>
       <div className="top-bar">
-        <p className="subreddit-name" onClick={handleInfo}>{dataPost.subredditName}</p>
-      <Link to={`/${dataPost.subredditName}`} onClick={handleChangePage}>{dataPost.subredditName}</Link>
-        <p className="author-name">{dataPost.authorName}
+        <Link to={`/${dataPost.subredditName}`} onClick={handleChangePage}>{dataPost.subredditName}</Link>
+        <p className="author-name">Posted by u/{dataPost.authorName}
         </p>
         <p className="time">
           {calTime()}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { selectPostsContainer } from "./PostsContainerSlice";
 import Post from "../Post/Post";
@@ -10,11 +10,6 @@ const PostsContainer = ({ subreddit }) => {
   //state
   const postContainer = useSelector(selectPostsContainer);
   const posts = postContainer.posts;
-  
-  //effect
-  useEffect(() => {
-   console.log(posts); 
-  }, [posts]);
 
   return (
     <section id="postContainer">
