@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Search from "../../features/Search/Search";
 import PostContainer from "../../features/PostContainer/PostsContainer";
 
 import Authentication from "../../features/Authentication/Authentication";
@@ -25,7 +24,6 @@ const AppIndex = () => {
 
   return (
     <main id="app-index">
-      <Search/>
       <Authentication />
       <PostContainer subreddit={null}/>
     </main>

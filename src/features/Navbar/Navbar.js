@@ -48,7 +48,6 @@ const Navbar = () => {
             className="btn btn-outline-dark my-2 my-sm-0" type="submit"
           >Search</button>
         </form> */}
-        
         {navbar.isLoading 
         ? <i className='bi bi-arrow-clockwise' id='navbar-user-loading'></i> 
         : <div id='navbar-user'>
