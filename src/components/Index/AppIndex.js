@@ -1,23 +1,33 @@
-import React from "react";
-import { Reddit } from "../../utility/reddit";
-import Filter from "../../features/Filter/Filter";
+import React, { useEffect } from "react";
+import Search from "../../features/Search/Search";
+import PostContainer from "../../features/PostContainer/PostsContainer";
 
+import Authentication from "../../features/Authentication/Authentication";
+import { useDispatch } from "react-redux";
+import { postsFetch } from "../../features/PostContainer/PostsContainerSlice";
+import { identityFetch } from "../../features/Navbar/NavbarSlice"
+import { Reddit } from "../../utility/reddit";
 
 const AppIndex = () => {
+  //action 
+  const action = useDispatch();
+
+  //state
+
+  useEffect(() => {
+    Reddit.getRefreshToken(
+    ).then(() => {
+      action(identityFetch());
+    }).then(() => {
+      action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+    });
+  })
 
   return (
     <main id="app-index">
-      <Filter/>
-      
-      <button className="btn btn-outline-info" onClick={Reddit.authorization}>
-        Click here
-      </button>
-      <button className="btn btn-outline-info" onClick={Reddit.getAccessToken}>
-        Get Access Token
-      </button>
-      <button className="btn btn-outline-info" onClick={Reddit.refreshToken}>
-        Get Refresh Token
-      </button>
+      <Search/>
+      <Authentication />
+      <PostContainer subreddit={null}/>
     </main>
   )
 }
