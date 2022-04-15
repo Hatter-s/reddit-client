@@ -1,0 +1,39 @@
+#navbar-search {
+  position: fixed;
+  bottom: 10vh;
+  right: 10vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* Search Trigger */
+#navbar-search > .search-trigger {
+  justify-self: flex-start;
+  width: 50px;
+  background-color: transparent;
+  border-radius: 5px;
+  box-shadow: 0.1em 0.1em 0.2em;
+}
+
+/* No display form */
+.no-display-form {
+  display: none;
+}
+
+/* Display form */
+.display-form {
+  position: fixed;
+  top: 20vh;
+  right: 10vw;
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+}
+
+.display-form > .search-input {
+  flex: 10 1;
+}
+
+.display-form > .search-submit {
+  flex: 1 1;
+}
