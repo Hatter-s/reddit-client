@@ -1,0 +1,45 @@
+#footer{
+    display: flex;
+    flex-direction: row;
+    padding: 2% ;
+    background-color: grey;
+}
+#footer p{
+    color: white;
+}
+#footer-icon ,#footer-menu, #footer-team{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 32%;
+}
+img{
+    height: 100px;
+    width: 100px;
+}
+#footer-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#footer-name{
+    padding-top: 4% ;
+}
+.footer-link{
+    color: #000;
+    display: inline !important;
+    text-decoration: none;
+}
+.footer-link:hover{
+    color: #FFF;
+}
+#footer-menu{
+    padding-top: 1%;
+}
+#footer-menu .footer-link{
+    margin-bottom : 5px ;
+}
+#team-name{
+    font-size: 42px;
+    margin-bottom: 7%;
+}
