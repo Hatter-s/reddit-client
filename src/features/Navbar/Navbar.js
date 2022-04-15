@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectNavbar } from './NavbarSlice';
 import { identityFetch } from './NavbarSlice';
 //css
-import './Navbar.css';
+import './navbar.css';
 
 const Navbar = () => {
   //action
