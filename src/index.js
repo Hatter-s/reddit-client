@@ -9,6 +9,9 @@ import * as serviceWorker from './serviceWorker';
 import Error404 from './components/Error/404';
 import AppIndex from './components/Index/AppIndex';
 import SubredditPage from './components/FullPage/SubredditPage/SubredditPage';
+import About from './components/FullPage/AboutUs/About'
+import Contact from './components/FullPage/ContactUs/Contact'
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +21,10 @@ ReactDOM.render(
             <Route path='/' element={<App/>}>
               <Route index element={<AppIndex/>} />
               <Route path='/r/:subredditId' element={<SubredditPage />}/>
+              <Route path='/about' element={<About/>} />
+              <Route path='/contact' element={<Contact/>} />
             </Route>
+            
             <Route path='*' element={<Error404/>}/>
         </Routes>        
       </Provider>
