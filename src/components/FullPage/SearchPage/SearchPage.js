@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Reddit } from "../../../utility/reddit";
 import { changePath } from "../../../app/utilitySlice";
-import { changeSort, changeLimit, changeSubreddit, selectSearchData } from "./SearchPageSlice";
+import { changeSort, changeLimit, selectSearchData } from "./SearchPageSlice";
 import PostsContainer from "../../../features/PostContainer/PostsContainer";
 import { searchFetch } from "../../../features/PostContainer/PostsContainerSlice";
 import { identityFetch } from "../../../features/Navbar/NavbarSlice";
