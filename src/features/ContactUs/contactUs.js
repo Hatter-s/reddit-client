@@ -1,18 +1,16 @@
 import React from 'react';
 import './contact_us.css'
 
-export class ContactHeader extends React.Component{
-    render(){
-        return <h1 id='contact-header'>Contact Us</h1>
-    }
-}
 export class ContactTeam extends React.Component{
     render(){
         return (
-            <div id="contact-team">
-            <p>GTV Team</p>
-            <p>Gnosis To Victory</p>
-        </div>
+            <section >
+                <h1 id='contact-header'>Contact Us</h1>
+                <div id="contact-team">
+                    <p>GTV Team</p>
+                    <p>Gnosis To Victory</p>
+                </div>
+            </section>
         )
     }
 }
