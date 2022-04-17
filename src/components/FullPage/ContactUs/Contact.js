@@ -1,6 +1,6 @@
 import React from 'react';
 import './contact.css'
-import {ContactHeader,ContactTeam,Information} from '../../../features/ContactUs/contactUs'
+
 
 
 function Contact() {
