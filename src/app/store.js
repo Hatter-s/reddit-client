@@ -4,6 +4,8 @@ import navbarReducer from '../features/Navbar/NavbarSlice';
 import postsContainerReducer from '../features/PostContainer/PostsContainerSlice';
 import filterReducer from '../features/Filter/FilterSlice';
 import subredditPageReducer from '../components/FullPage/SubredditPage/SubredditPageSlice';
+import utilityReducer from './utilitySlice';
+import searchPageReducer from '../components/FullPage/SearchPage/SearchPageSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,7 +13,9 @@ const store = configureStore({
     navbar: navbarReducer,
     postsContainer: postsContainerReducer,
     filter: filterReducer,
-    subredditPage: subredditPageReducer
+    subredditPage: subredditPageReducer,
+    utility: utilityReducer,
+    searchPage: searchPageReducer
   },
 });
 

@@ -30,7 +30,7 @@ const NavbarSearch = () => {
        </button>
        <form 
         onSubmit={handleSubmit}
-        className={displaySearch ? "no-display-form" : "display-form"}
+        className={displaySearch ? "display-form" : "no-display-form"}
        >
         <input 
           type="text"

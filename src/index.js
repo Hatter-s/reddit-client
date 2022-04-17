@@ -11,6 +11,7 @@ import AppIndex from './components/Index/AppIndex';
 import SubredditPage from './components/FullPage/SubredditPage/SubredditPage';
 import About from './components/FullPage/AboutUs/About'
 import Contact from './components/FullPage/ContactUs/Contact'
+import SearchPage from './components/FullPage/SearchPage/SearchPage';
 
 
 ReactDOM.render(
@@ -23,6 +24,7 @@ ReactDOM.render(
               <Route path='/r/:subredditId' element={<SubredditPage />}/>
               <Route path='/about' element={<About/>} />
               <Route path='/contact' element={<Contact/>} />
+              <Route path='/search' element={<SearchPage />} />
             </Route>
             
             <Route path='*' element={<Error404/>}/>
