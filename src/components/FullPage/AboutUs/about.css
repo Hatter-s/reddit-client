@@ -34,10 +34,10 @@
     padding-bottom: 20%;
 }
 .aboutFunction > .character > #vu{
-    background-image: url("D:\Github\reddit-client\reddit-client\public\image\about\vu-image.jpg");
+    background-image: url("../../../../public/image/about/vu-image.jpg");
 }
 .aboutFunction > .character > #thanh{
-    background-image: url("D:\Github\reddit-client\reddit-client\public\image\about\thanh-image.jpg");
+    background-image: url("../../../../public/image/about/thanh-image.jpg");
     padding-left: 27%;
 }
 .aboutFunction > .character > #vu > #about-icon i ,.aboutFunction > .character > #thanh > #about-icon i{
