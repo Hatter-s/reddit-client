@@ -7,6 +7,7 @@ import { getInfo, selectSubredditName } from "./SubredditPageSlice";
 import { identityFetch } from "../../../features/Navbar/NavbarSlice";
 import { postsFetch } from "../../../features/PostContainer/PostsContainerSlice";
 import AboutSubreddit from "../../../features/AboutSubreddit/AboutSubreddit";
+import { changePath } from "../../../app/utilitySlice";
 
 const SubredditPage = () => {
   let params = useParams();
@@ -19,16 +20,28 @@ const SubredditPage = () => {
 
 
   //handle event
-  useEffect( () => {
-    action(getInfo(subredditFullName));
-  })
   useEffect(() => {
-    Reddit.getRefreshToken(
-    ).then(() => {
-      action(identityFetch());
-    }).then(() => {
-      action(postsFetch({path: 'hot', lastElement: null, firstElement: null, subreddit: params.subredditId}));
-    });
+    if(!localStorage.getItem("accessToken")){
+      Reddit.getAccessToken(
+      ).then(() => {
+        action(identityFetch());
+      }).then(() => {
+        action(getInfo(subredditFullName));
+      }).then(() => {
+        action(postsFetch({path: 'hot', lastElement: null, firstElement: null, subreddit: params.subredditId}));
+      });
+    } else {
+      Reddit.getRefreshToken(
+      ).then(() => {
+        action(identityFetch());
+      }).then(() => {
+        action(getInfo(subredditFullName));
+      }).then(() => {
+        action(postsFetch({path: 'hot', lastElement: null, firstElement: null, subreddit: params.subredditId}));
+      }); 
+    }
+    
+    action(changePath(window.location.pathname));
   })
 
 

@@ -64,11 +64,13 @@ export const Reddit = {
     ).then(response => response.json()
     ).then(jsonResponse => {
       if(jsonResponse.error === 'invalid_grant') {
-        Reddit.authorization();
+        // Reddit.authorization();
+        return;
       }
       localStorage.setItem('accessToken', jsonResponse['access_token']);
       localStorage.setItem('refreshToken', jsonResponse['refresh_token']);
       localStorage.setItem('expiresIn', jsonResponse['expires_in'])
+      console.log(localStorage);
       accessToken = jsonResponse['access_token'];
       refreshToken = jsonResponse['refresh_token'];
       return accessToken;
@@ -122,10 +124,11 @@ export const Reddit = {
       return result;
     });
   },
-  search(term, limit, sort) {
-    return fetch(`${domain}/search.json?q=${term}&limit=${limit}&sort=${sort}`
+  search(term, limit = 25, sort = "relevance", firstElement = null, lastElement = null) {
+    return fetch(`${domain}/search.json?q=${term}&limit=${limit}&sort=${sort}&after=${lastElement}&before=${firstElement}`
     ).then(response => response.json()
-    ).then(jsonResponse => console.log(jsonResponse));
+    ).then(jsonResponse => jsonResponse
+    ).catch(error => console.log(error));
   },
   emojis() {
     return fetch(`${oauthDomain}/api/v1/webdev/emojis/all.json`,{

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { postsFetch } from "../../features/PostContainer/PostsContainerSlice";
 import { identityFetch } from "../../features/Navbar/NavbarSlice"
 import { Reddit } from "../../utility/reddit";
+import { changePath } from "../../app/utilitySlice";
 
 const AppIndex = () => {
   //action 
@@ -14,12 +15,23 @@ const AppIndex = () => {
   //state
 
   useEffect(() => {
-    Reddit.getRefreshToken(
-    ).then(() => {
-      action(identityFetch());
-    }).then(() => {
-      action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
-    });
+    if(!localStorage.getItem("accessToken")){
+      Reddit.getAccessToken().then(() => {
+        action(identityFetch());
+      }).then(() => {
+        action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+      });
+    }
+    else {
+      Reddit.getRefreshToken(
+      ).then(() => {
+        action(identityFetch());
+      }).then(() => {
+        action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+      });
+    }
+    
+    action(changePath(window.location.pathname));
   })
 
   return (
