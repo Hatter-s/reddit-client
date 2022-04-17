@@ -44,7 +44,7 @@ export const authenticationSlice = createSlice({
   extraReducers: {
     //acess token
     [getAccessToken.pending]: (state) => {
-      return {...state, isLoading: true, hasError: false}
+      return { ...state, isLoading: true, hasError: false }
     },
     [getAccessToken.fulfilled]: (state, action) => {
       return {...state, isLoading: false, hasError: false, accessToken: action.payload}
