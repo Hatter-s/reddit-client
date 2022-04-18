@@ -1,0 +1,27 @@
+.recommend-subreddit-search {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  background-color: rgba(256, 256, 256, 0.9);
+  padding: 0;
+  border: 1px solid var(--bs-dark);
+  border-right: none;
+  min-width: 1px;
+}
+
+.recommend-subreddit-search > .container {
+  display: flex;
+  background-color: rgb(250, 235, 215);
+  padding: 0;
+  margin-left: 0.3em;
+  margin-right: 0.1em;
+}
+
+.recommend-subreddit-search > .container > p {
+  margin: 0;
+}
+
+.recommend-subreddit-search > .container > .delete-button {
+  background-color: transparent;
+  border: none;
+}

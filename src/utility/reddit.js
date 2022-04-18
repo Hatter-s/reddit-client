@@ -124,7 +124,20 @@ export const Reddit = {
       return result;
     });
   },
-  search(term, limit = 25, sort = "relevance", firstElement = null, lastElement = null) {
+  search(term, limit = 25, sort = "relevance", firstElement = null, lastElement = null, subreddit = null) {
+    if(subreddit) {
+      return fetch(`${oauthDomain}/${subreddit}/search.json?q=${term}&limit=${limit}&sort=${sort}&after=${lastElement}&before=${firstElement}`,
+      {
+        headers: {
+          //if have error it may be here in accessToken
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      ).then(response => response.json()
+      ).then(jsonResponse => jsonResponse
+      ).catch(error => console.log(error));
+    }
     return fetch(`${domain}/search.json?q=${term}&limit=${limit}&sort=${sort}&after=${lastElement}&before=${firstElement}`
     ).then(response => response.json()
     ).then(jsonResponse => jsonResponse

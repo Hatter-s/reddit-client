@@ -8,6 +8,7 @@ import { identityFetch } from "../../../features/Navbar/NavbarSlice";
 import { postsFetch } from "../../../features/PostContainer/PostsContainerSlice";
 import AboutSubreddit from "../../../features/AboutSubreddit/AboutSubreddit";
 import { changePath } from "../../../app/utilitySlice";
+import { changeSubreddit } from "../SearchPage/SearchPageSlice";
 
 const SubredditPage = () => {
   let params = useParams();
@@ -29,6 +30,8 @@ const SubredditPage = () => {
         action(getInfo(subredditFullName));
       }).then(() => {
         action(postsFetch({path: 'hot', lastElement: null, firstElement: null, subreddit: params.subredditId}));
+      }).then(() => {
+        action(changeSubreddit(window.location.pathname));
       });
     } else {
       Reddit.getRefreshToken(
@@ -38,7 +41,9 @@ const SubredditPage = () => {
         action(getInfo(subredditFullName));
       }).then(() => {
         action(postsFetch({path: 'hot', lastElement: null, firstElement: null, subreddit: params.subredditId}));
-      }); 
+      }).then(() => {
+        action(changeSubreddit(window.location.pathname));
+      });;
     }
     
     action(changePath(window.location.pathname));

@@ -22,6 +22,7 @@ export const SearchPageSlice = createSlice({
     },
 
     changeSubreddit: (state, action) => {
+      window.localStorage.setItem("subredditName", action.payload);
       return { ...state, searchData: { ...state.searchData, subreddit: action.payload } }
     },
 
@@ -36,6 +37,7 @@ export const { changeLimit, changeSort, changeSubreddit, changeTerm } = SearchPa
 
 //select
 export const selectSearchData = state => state.searchPage.searchData;
+export const selectSubreddit = state => state.searchPage.searchData.subreddit;
 
 //reducer
 export default SearchPageSlice.reducer;

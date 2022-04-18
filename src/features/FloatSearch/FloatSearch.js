@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RecommendSubredditSearch from "../RecommendSubredditSearch/RecommendSubredditSearch";
 import "./FloatSearch.css";
 
 const NavbarSearch = () => {
@@ -22,16 +23,17 @@ const NavbarSearch = () => {
 
   return (
     <section id="navbar-search">
-       <button 
-        className="search-trigger"
-        onClick={triggerSearch}
+      <button 
+      className="search-trigger"
+      onClick={triggerSearch}
+    >
+        <i className="bi bi-search"></i>
+      </button>
+      <form 
+      onSubmit={handleSubmit}
+      className={displaySearch ? "display-form" : "no-display-form"}
       >
-         <i className="bi bi-search"></i>
-       </button>
-       <form 
-        onSubmit={handleSubmit}
-        className={displaySearch ? "display-form" : "no-display-form"}
-       >
+        <RecommendSubredditSearch />
         <input 
           type="text"
           value={searchValue}
@@ -42,8 +44,9 @@ const NavbarSearch = () => {
           type="submit"
           value="Search"
           className="btn btn-outline-dark search-submit"
-        />
-       </form>
+        />    
+      </form>
+       
     </section>
   )
 }

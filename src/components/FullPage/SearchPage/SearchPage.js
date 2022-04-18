@@ -6,10 +6,12 @@ import { changeSort, changeLimit, selectSearchData, changeTerm } from "./SearchP
 import PostsContainer from "../../../features/PostContainer/PostsContainer";
 import { searchFetch } from "../../../features/PostContainer/PostsContainerSlice";
 import { identityFetch } from "../../../features/Navbar/NavbarSlice";
+import RecommendSubredditSearch from "../../../features/RecommendSubredditSearch/RecommendSubredditSearch";
 
 const SearchPage = () => {
   //state
   const searchData = useSelector(selectSearchData);
+  const subredditName = window.localStorage.getItem("subredditName");
   const term = window.location.search ? window.location.search.match(/(?<=\?term=).*/)[0] : "";
   //action
   const action = useDispatch();
@@ -21,26 +23,25 @@ const SearchPage = () => {
     Reddit.getRefreshToken(       
     ).then(() => {
       action(identityFetch());
-    })
-    .then(() => {
-      action(searchFetch({term, limit: searchData.limit, sort: searchData.sort}))
+    }).then(() => {
+      action(searchFetch({term, limit: searchData.limit, sort: searchData.sort, firstElement: null, lastElement: null, subreddit: subredditName}))
     })
   })
 
   //handle limit
   const handleLimit = ({ target }) => {
     action(changeLimit(target.value));
-    action(searchFetch({term, limit: target.value, sort: searchData.sort}));
+    action(searchFetch({term, limit: target.value, sort: searchData.sort, firstElement: null, lastElement: null, subreddit: subredditName}));
   }
 
   const handleSort = ({ target }) => {
     action(changeSort(target.value));
-    action(searchFetch({term, limit: searchData.limit, sort: target.value}))
+    action(searchFetch({term, limit: searchData.limit, sort: target.value, firstElement: null, lastElement: null, subreddit: subredditName}))
   }
 
   const handleTerm = ({ target }) => {
     action(changeTerm(target.value));
-    action(searchFetch({term: target.value, limit: searchData.limit, sort: searchData.sort}))
+    action(searchFetch({term: target.value, limit: searchData.limit, sort: searchData.sort, firstElement: null, lastElement: null, subreddit: subredditName}))
   }
 
   return (
@@ -74,6 +75,7 @@ const SearchPage = () => {
         </label>
         <label htmlFor="term">
         Term:
+          <RecommendSubredditSearch />
           <input
             type= "text"
             value={searchData.term ? searchData.term : term} 
