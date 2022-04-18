@@ -23,6 +23,10 @@ export const SearchPageSlice = createSlice({
 
     changeSubreddit: (state, action) => {
       return { ...state, searchData: { ...state.searchData, subreddit: action.payload } }
+    },
+
+    changeTerm: (state, action) => {
+      return { ...state, searchData: { ...state.searchData, term: action.payload }}
     }
   }
 }) 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Reddit } from "../../../utility/reddit";
 import { changePath } from "../../../app/utilitySlice";
-import { changeSort, changeLimit, selectSearchData } from "./SearchPageSlice";
+import { changeSort, changeLimit, selectSearchData, changeTerm } from "./SearchPageSlice";
 import PostsContainer from "../../../features/PostContainer/PostsContainer";
 import { searchFetch } from "../../../features/PostContainer/PostsContainerSlice";
 import { identityFetch } from "../../../features/Navbar/NavbarSlice";
@@ -10,13 +10,11 @@ import { identityFetch } from "../../../features/Navbar/NavbarSlice";
 const SearchPage = () => {
   //state
   const searchData = useSelector(selectSearchData);
+  const term = window.location.search.match(/(?<=\?term=).*/)[0];
 
   //action
   const action = useDispatch();
   // console.log(window.location.search.match(/(?<=\?term=).*/)[0])
-
-  //utility var
-  const term = window.location.search.match(/(?<=\?term=).*/)[0];
 
   //effect
   useEffect(() => {
@@ -41,12 +39,17 @@ const SearchPage = () => {
     action(searchFetch({term, limit: searchData.limit, sort: target.value}))
   }
 
+  const handleTerm = ({ target }) => {
+    action(changeTerm(target.value));
+    action(searchFetch({term: target.value, limit: searchData.limit, sort: searchData.sort}))
+  }
+
   return (
     <main id="search-page">
       <h1>This is search page</h1>
       <div id="select-container">
         <label>
-          Limit
+          Limit:
           <select 
             className="limit" 
             onChange={handleLimit}
@@ -58,7 +61,7 @@ const SearchPage = () => {
           </select> 
         </label>
         <label>
-          Sort
+          Sort:
           <select 
             className="sort"
             onChange={handleSort}
@@ -69,6 +72,15 @@ const SearchPage = () => {
             <option value="new">New</option>
             <option value="comments">Comments</option>
           </select> 
+        </label>
+        <label htmlFor="term">
+        Term:
+          <input
+            type= "text"
+            value={searchData.term ? searchData.term : term} 
+            className="term"
+            onChange={handleTerm}
+          />
         </label>
       </div>
       <PostsContainer/>
