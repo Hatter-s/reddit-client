@@ -156,6 +156,9 @@ export const PostsContainerSlice = createSlice({
       }
     },
     [searchFetch.fulfilled]: (state, action) => {
+      if(!action.payload[0]) {
+        return state;
+      }
       return {
         ...state,
         isLoading: false,
