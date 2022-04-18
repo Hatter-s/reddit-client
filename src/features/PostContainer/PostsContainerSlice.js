@@ -59,8 +59,8 @@ export const postsFetch = createAsyncThunk(
 )
 
 export const searchFetch = createAsyncThunk(
-  "postContainer/searchFetch", async ({term, limit, sort}) => {
-    const searchValues = Reddit.search(term, limit, sort).then(
+  "postContainer/searchFetch", async ({term, limit, sort, firstElement, lastElement, subreddit}) => {
+    const searchValues = Reddit.search(term, limit, sort, firstElement, lastElement, subreddit).then(
       result => {
         const data = result.data.children //return list array
         const configData = data.map(searchValue => {

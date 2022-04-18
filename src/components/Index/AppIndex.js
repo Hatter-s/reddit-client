@@ -7,6 +7,7 @@ import { postsFetch } from "../../features/PostContainer/PostsContainerSlice";
 import { identityFetch } from "../../features/Navbar/NavbarSlice"
 import { Reddit } from "../../utility/reddit";
 import { changePath } from "../../app/utilitySlice";
+import { changeSubreddit } from "../FullPage/SearchPage/SearchPageSlice";
 
 const AppIndex = () => {
   //action 
@@ -20,6 +21,8 @@ const AppIndex = () => {
         action(identityFetch());
       }).then(() => {
         action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+      }).then(() => {
+        action(changeSubreddit(null));
       });
     }
     else {
@@ -28,6 +31,8 @@ const AppIndex = () => {
         action(identityFetch());
       }).then(() => {
         action(postsFetch({path: 'best', lastElement: null, firstElement: null, subreddit: null}));
+      }).then(() => {
+        action(changeSubreddit(null));
       });
     }
     
