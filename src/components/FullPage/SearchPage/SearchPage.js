@@ -10,8 +10,7 @@ import { identityFetch } from "../../../features/Navbar/NavbarSlice";
 const SearchPage = () => {
   //state
   const searchData = useSelector(selectSearchData);
-  const term = window.location.search.match(/(?<=\?term=).*/)[0];
-
+  const term = window.location.search ? window.location.search.match(/(?<=\?term=).*/)[0] : "";
   //action
   const action = useDispatch();
   // console.log(window.location.search.match(/(?<=\?term=).*/)[0])
@@ -83,7 +82,12 @@ const SearchPage = () => {
           />
         </label>
       </div>
-      <PostsContainer/>
+      {term + searchData.term === ""
+      ? <div className="no-search-term">
+          <h1 >Add value in term to see result</h1>
+        </div>
+      : <PostsContainer/>
+      }
     </main>
   )
 }
