@@ -1,0 +1,36 @@
+/* basic setting */
+#history-navbar {
+  position: absolute;
+  background-color: gray;
+  bottom: -10;
+  left: 0;
+  right: 0;
+}
+
+#history-navbar a {
+  text-decoration: none;
+  color: var(--bs-light);
+  display: block;
+}
+
+#history-navbar a:hover {
+  color: rgba( 256, 256 , 256, 0.6);
+  text-decoration: underline;
+}
+
+#history-navbar > .userbias {
+  font-size: 20px;
+}
+
+#history-navbar > .trigger-a {
+  font-size: 20px;
+}
+
+/* Navbar history */
+#history-navbar > #navbar-history {
+  list-style: none;
+}
+
+#history-navbar > #navbar-history > li {
+  padding: 1em;
+}
