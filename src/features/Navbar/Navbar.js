@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNavbar } from './NavbarSlice';
 import { identityFetch } from './NavbarSlice';
+import HistoryNavbar from '../HistoryNavbar/HistoryNavbar';
 //css
 import './navbar.css';
 
@@ -30,37 +31,29 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* <button 
-          type='button' 
-          className="btn btn-light" 
-          id="nav-home"
-        >Home</button>
-
-        <form 
-          id='nav-search' 
-          className="form-inline my-2 my-lg-0"
-        >
-          <input 
-            id='nav-search-bar' className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-          />
-          <button 
-            id='nav-search-button' 
-            className="btn btn-outline-dark my-2 my-sm-0" type="submit"
-          >Search</button>
-        </form> */}
         {navbar.isLoading 
         ? <i className='bi bi-arrow-clockwise' id='navbar-user-loading'></i> 
         : <div id='navbar-user'>
-            <img 
+            <a 
+              className='display' 
+              href='#navbar-user-hidden'
+              data-bs-toggle="collapse"
+              role="button"
+            >
+              <img 
               src={identity['snoovatar_img']}
               alt='lorem ipsum' 
               id='navbar-user-img' />
-            <h2 id='navbar-user-name'>{identity.name}</h2>
-            <p id='navbar-user-coins'>Coins:{identity.coins}</p>
-            <p id='navbar-user-karma'>karma:{identity['total_karma']}</p>
-            <button className='dropdown-trigger'>
-              <i className='bi bi-arrow-down' ></i>
-            </button>
+              <h2 id='navbar-user-name'>{identity.name}</h2>
+              <p id='navbar-user-coins'>Coins:{identity.coins}</p>
+              <p id='navbar-user-karma'>karma:{identity['total_karma']}</p>
+              <button className='dropdown-trigger'>
+                <i className='bi bi-arrow-down' ></i>
+              </button>
+            </a>
+            <div id='navbar-user-hidden' className='collapse'>
+              <HistoryNavbar />
+            </div> 
         </div>}
       </div>
     </nav>

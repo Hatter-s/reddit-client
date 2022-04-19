@@ -42,8 +42,9 @@
 }
 
 /* Navbar User */
-.navbar > .container-fluid > #navbar-user {
+.navbar > .container-fluid > #navbar-user > .display {
     display: grid;
+    background-color: transparent;
     gap: 0.1em;
     grid-template-columns: 40px repeat(2, 1fr) 30px;
     grid-template-rows: repeat(2, 30px);
@@ -51,35 +52,37 @@
     border-right: 1px solid var(--bs-dark);
     border-bottom: 1px solid var(--bs-dark);
     box-shadow: 0.1em 0.1em 0.2em;
+    text-decoration: none;
+    color: var(--bs-dark);
 }
 
-.navbar > .container-fluid > #navbar-user:hover{
+.navbar > .container-fluid > #navbar-user:hover > .display {
     border-right: 1px solid var(--bs-dark);
     border-bottom: 1px solid var(--bs-dark);
     box-shadow: 0.1em 0.1em 0.2em var(--bs-light);
 }
 
-.navbar > .container-fluid > #navbar-user:active {
+.navbar > .container-fluid > #navbar-user:active > .display {
     border-top: 1px solid var(--bs-dark);
     border-left: 1px solid var(--bs-dark);
     box-shadow: 0.1em 0.1em 0.2em;
 }
 
-.navbar > .container-fluid > #navbar-user > img {
+.navbar > .container-fluid > #navbar-user > .display > img {
     grid-area: 1 / 1 / span 2 / span 1;
     width: 40px;
 }
 
-.navbar > .container-fluid > #navbar-user > #navbar-user-name {
+.navbar > .container-fluid > #navbar-user > .display > #navbar-user-name {
     grid-area: 1 / 2 / span 1 / span 2;
     font-size: 24px;
 }
 
-.navbar > .container-fluid > #navbar-user > p {
+.navbar > .container-fluid > #navbar-user > .display > p {
    font-size: 14px; 
 }
 
-.navbar > .container-fluid > #navbar-user > .dropdown-trigger {
+.navbar > .container-fluid > #navbar-user > .display > .dropdown-trigger {
     grid-area: 1 / 4 / span 2 / span 1;
     padding: 0;
     background-color: transparent;
