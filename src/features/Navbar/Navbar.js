@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNavbar } from './NavbarSlice';
 import { identityFetch } from './NavbarSlice';
-import HistoryNavbar from '../HistoryNabar/HistoryNavbar';
+import HistoryNavbar from '../HistoryNavbar/HistoryNavbar';
 //css
 import './navbar.css';
 
